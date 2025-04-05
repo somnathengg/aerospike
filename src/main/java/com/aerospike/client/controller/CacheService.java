@@ -1,6 +1,5 @@
 package com.aerospike.client.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +12,6 @@ import com.aerospike.client.AerospikeClient;
 import com.aerospike.client.Bin;
 import com.aerospike.client.Key;
 import com.aerospike.client.Record;
-import com.aerospike.client.Value;
 import com.aerospike.client.bean.UserMaster;
 import com.aerospike.client.policy.QueryPolicy;
 import com.aerospike.client.policy.WritePolicy;
@@ -32,7 +30,7 @@ public class CacheService {
 	public void saveToCache() {
 		System.out.println("Going to store now");
 		WritePolicy writePolicy = new WritePolicy();
-		writePolicy.expiration = 10 * 60; // 5 minutes
+		writePolicy.expiration = 10 * 60; // 10 minutes
 
 		IntStream.range(0, 5000).forEach(d -> {
 			
@@ -58,7 +56,7 @@ public class CacheService {
 		
 		System.out.println("Going to update now");
 		WritePolicy writePolicy = new WritePolicy();
-		writePolicy.expiration = 10 * 60; // 5 minutes
+		writePolicy.expiration = 10 * 60; // 10 minutes
 		
 		long currentTimeMillis = System.currentTimeMillis();
 		
@@ -118,7 +116,7 @@ public class CacheService {
 	{
 		Key fetchKey = new Key("test", "user_master", key);
 		WritePolicy writePolicy = new WritePolicy();
-		writePolicy.expiration = 10 * 60; // 5 minutes
+		writePolicy.expiration = 10 * 60; // 10 minutes
 		Record userrecord = aerospikeClient.get(writePolicy, fetchKey);
 		UserMaster usrMst = new UserMaster();
 		usrMst.setId(Integer.parseInt(userrecord.bins.get("id").toString()));
