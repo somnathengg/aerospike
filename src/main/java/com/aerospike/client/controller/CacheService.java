@@ -136,9 +136,6 @@ public class CacheService {
 		usrMst.setModifiedBy(userrecord.bins.get("modified_by").toString());
 		usrMst.setModifiedDate(modifiedconverteddata);
 		
-		System.out.println(createdconverteddate);
-		System.out.println(modifiedconverteddata);
-		
 		System.out.println(usrMst.toString());
 		
 		return usrMst;
