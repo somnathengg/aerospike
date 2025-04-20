@@ -8,6 +8,8 @@ public class OCLimitValidationDTO {
 	private String payeeVpa;
 	private Double amount;
 	private String txnId;
+	private long recordKey;
+	
 	public String getMccCode() {
 		return mccCode;
 	}
@@ -38,11 +40,16 @@ public class OCLimitValidationDTO {
 	public void setTxnId(String txnId) {
 		this.txnId = txnId;
 	}
+	public long getRecordKey() {
+		return recordKey;
+	}
+	public void setRecordKey(long recordKey) {
+		this.recordKey = recordKey;
+	}
 	@Override
 	public String toString() {
 		return "OCLimitValidationDTO [mccCode=" + mccCode + ", payerVpa=" + payerVpa + ", payeeVpa=" + payeeVpa
-				+ ", amount=" + amount + ", txnId=" + txnId + "]";
+				+ ", amount=" + amount + ", txnId=" + txnId + ", recordKey=" + recordKey + "]";
 	}
-	
 	
 }
