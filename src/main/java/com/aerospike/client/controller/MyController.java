@@ -8,34 +8,44 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aerospike.client.bean.UserMaster;
+import com.aerospike.client.bean.UserMasterBean;
+import com.aerospike.client.service.AerospikeService;
 
 @RestController
 @RequestMapping("test")
 public class MyController {
 
 	@Autowired
-	private CacheService cacheService;
+	private AerospikeService aerospikeService;
 
-	@GetMapping(value = "/save-cache", produces = "application/json")
+	@GetMapping(value = "/save-data", produces = "application/json")
 	public void testme() {
-		cacheService.saveToCache();
+		aerospikeService.saveToCache();
 	}
 
 	@GetMapping(value = "/fetch-data", produces = "application/json")
-	public List<UserMaster> fetchData() {
-		return cacheService.fetchDataByFilter();
+	public List<UserMasterBean> fetchData() {
+		return aerospikeService.fetchDataByFilter();
 	}
 
 	@GetMapping(value = "/fetch-data-by-key/{record-key}", produces = "application/json")
-	public UserMaster fetchDataByKey(@PathVariable("record-key") String recordKey) {
-		return cacheService.fetchDataByKey(recordKey);
+	public UserMasterBean fetchDataByKey(@PathVariable("record-key") String recordKey) {
+		return aerospikeService.fetchDataByKey(recordKey);
 	}
-	
-	
+
 	@GetMapping(value = "/update-data")
 	public void updateBinCall() {
-		cacheService.updateData();
+		aerospikeService.updateData();
+	}
+	
+	@GetMapping(value = "/oc-limit-insert")
+	public void ocLimitInsert() {
+		aerospikeService.ocLimitInsert();
+	}
+	
+	@GetMapping(value = "/fetch-data-by-key")
+	public void fetchDataByKey() {
+		aerospikeService.fetchDataByKeyRange();
 	}
 
 }

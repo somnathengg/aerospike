@@ -2,7 +2,7 @@ package com.aerospike.client.bean;
 
 import java.util.Date;
 
-public class UserMaster {
+public class UserMasterBean {
 
 	private int id;
 	private String username;

@@ -1,21 +1,17 @@
 package com.aerospike.client;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import com.aerospike.client.policy.ClientPolicy;
 
 @SpringBootApplication
-@EnableConfigurationProperties
-@EnableAutoConfiguration
-public class AerospikeExampleApplication {
+public class AerospikeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AerospikeExampleApplication.class, args);
-		System.out.println("hellow spring boot aerospike client test");
+		SpringApplication.run(AerospikeApplication.class, args);
+		System.out.println("latest build somnath");
 	}
 
 	@Bean
